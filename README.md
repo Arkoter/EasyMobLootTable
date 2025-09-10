@@ -12,7 +12,7 @@ A Minecraft plugin that allows server administrators to easily customize mob loo
 
 ## 📋 Requirements
 
-- **Minecraft Version**: 1.20.1
+- **Minecraft Version**: 1.20.x | 1.21.x
 - **Server Software**: Spigot/Paper
 - **Java Version**: Java 8 or higher
 

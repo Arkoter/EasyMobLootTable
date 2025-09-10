@@ -2,7 +2,7 @@ name: EasyMobLootTable
 version: 1.0.0
 author: Arkoter
 main: fr.arkoter.easymobloottable.EasyMobLootTable
-api-version: 1.20
+api-version: 1.21
 description: A Minecraft plugin to easily customize mob loot tables
 
 commands:
