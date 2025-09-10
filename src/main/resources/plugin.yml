@@ -1,0 +1,17 @@
+name: EasyMobLootTable
+version: 1.0.0
+author: Arkoter
+main: fr.arkoter.easymobloottable.EasyMobLootTable
+api-version: 1.20
+description: A Minecraft plugin to easily customize mob loot tables
+
+commands:
+  mobloot:
+    description: Manage custom mob loot tables
+    usage: /mobloot <mob> <item> <min_quantity> <max_quantity> | /mobloot remove <mob>
+    permission: easymobloottable.admin
+
+permissions:
+  easymobloottable.admin:
+    description: Allows access to all EasyMobLootTable commands
+    default: op

@@ -1,0 +1,34 @@
+# EasyMobLootTable Configuration
+# 
+# This file stores custom mob loot tables.
+# You can also manage loot using in-game commands:
+# /mobloot <mob> <item> <min_quantity> <max_quantity>
+# /mobloot remove <mob>
+# /mobloot reset <mob>
+#
+# Configuration structure:
+# mobs:
+#   MOB_NAME:
+#     items:
+#       ITEM_NAME:
+#         min: 1
+#         max: 3
+#
+# Example configuration (uncomment to use):
+# mobs:
+#   ZOMBIE:
+#     items:
+#       DIAMOND:
+#         min: 1
+#         max: 2
+#       EMERALD:
+#         min: 1
+#         max: 1
+#   SKELETON:
+#     items:
+#       GOLD_INGOT:
+#         min: 2
+#         max: 5
+
+# Current custom loot tables will appear below when configured via commands
+mobs: {}
