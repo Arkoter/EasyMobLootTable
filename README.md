@@ -18,21 +18,32 @@ A Minecraft plugin that allows server administrators to easily customize mob loo
 
 ## 📦 Installation
 
-1. Download the latest `EasyMobLootTable-1.0.0.jar` from the releases
+1. Download the latest `EasyMobLootTable-1.1.0.jar` from the releases
 2. Place the JAR file in your server's `plugins` folder
 3. Restart your server
 4. The plugin will create a default configuration file automatically
 
 ## 🎮 Commands
 
-### Add Custom Loot
+### GUI Interface (Recommended)
+```
+/moblootgui
+```
+**Opens an intuitive graphical interface where you can:**
+- **Select mobs visually** using their spawn eggs
+- **Add items** directly from your hand to loot tables
+- **Modify quantities** using easy +/- buttons
+- **View and edit** existing loot tables
+- **Remove custom loot** with simple clicks
+
+### Add Custom Loot (Command-line)
 ```
 /mobloot <mob> <item> <min_quantity> <max_quantity>
 ```
 **Example**: `/mobloot zombie diamond 1 3`
 - Makes zombies drop between 1 and 3 diamonds
 
-### Remove Custom Loot
+### Remove Custom Loot (Command-line)
 ```
 /mobloot remove <mob>
 ```
@@ -138,6 +149,13 @@ This project is open source. Feel free to modify and distribute according to you
 If you encounter any issues or have suggestions for new features, please create an issue on this GitHub repository.
 
 ## 🔄 Version History
+
+- **v1.1.0** - GUI Update
+  - Added graphical user interface (/moblootgui command)
+  - Visual mob selection using spawn eggs
+  - Direct item addition from hand
+  - GUI-based quantity modification with +/- buttons
+  - Enhanced user experience for loot table management
 
 - **v1.0.0** - Initial release
   - Basic mob loot customization
