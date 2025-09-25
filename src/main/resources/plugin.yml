@@ -10,6 +10,10 @@ commands:
     description: Manage custom mob loot tables
     usage: /mobloot <mob> <item> <min_quantity> <max_quantity> | /mobloot remove <mob>
     permission: easymobloottable.admin
+  moblootgui:
+    description: Open the GUI interface for managing mob loot tables
+    usage: /moblootgui
+    permission: easymobloottable.admin
 
 permissions:
   easymobloottable.admin:
