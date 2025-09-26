@@ -26,7 +26,7 @@ public class LootTableViewerGui {
     }
     
     public void open(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "§6§lLoot Tables Modifiées");
+        Inventory gui = Bukkit.createInventory(null, 54, "§6§lModified Loot Tables");
         
         // Get all modified mobs from config
         ConfigurationSection mobsSection = plugin.getConfig().getConfigurationSection("mobs");
@@ -34,10 +34,10 @@ public class LootTableViewerGui {
             // No modified loot tables
             ItemStack noData = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
             ItemMeta noDataMeta = noData.getItemMeta();
-            noDataMeta.setDisplayName("§7§lAucune loot table modifiée");
+            noDataMeta.setDisplayName("§7§lNo modified loot tables");
             noDataMeta.setLore(Arrays.asList(
-                "§7Vous n'avez encore modifié",
-                "§7aucune loot table de mob"
+                "§7You haven't modified any",
+                "§7mob loot tables yet"
             ));
             noData.setItemMeta(noDataMeta);
             
@@ -65,14 +65,14 @@ public class LootTableViewerGui {
         // Back button
         ItemStack back = new ItemStack(Material.ARROW);
         ItemMeta backMeta = back.getItemMeta();
-        backMeta.setDisplayName("§c§lRetour au menu principal");
+        backMeta.setDisplayName("§c§lBack to Main Menu");
         back.setItemMeta(backMeta);
         gui.setItem(49, back);
         
         // Close button
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName("§c§lFermer");
+        closeMeta.setDisplayName("§c§lClose");
         close.setItemMeta(closeMeta);
         gui.setItem(53, close);
         
@@ -112,7 +112,7 @@ public class LootTableViewerGui {
                         editorGui.open(player, mobType);
                         return;
                     } catch (IllegalArgumentException e) {
-                        player.sendMessage("§cErreur: Type de mob invalide!");
+                        player.sendMessage("§cError: Invalid mob type!");
                         return;
                     }
                 }
@@ -131,7 +131,7 @@ public class LootTableViewerGui {
         // Get loot table details
         List<String> lore = new ArrayList<>();
         lore.add("§7Type: §f" + mobType.name());
-        lore.add("§7Items modifiés:");
+        lore.add("§7Modified items:");
         
         ConfigurationSection mobSection = plugin.getConfig().getConfigurationSection("mobs." + mobType.name());
         if (mobSection != null) {
@@ -141,7 +141,7 @@ public class LootTableViewerGui {
                 int count = 0;
                 for (String itemName : itemNames) {
                     if (count >= 5) {
-                        lore.add("§7  ... et " + (itemNames.size() - 5) + " autres");
+                        lore.add("§7  ... and " + (itemNames.size() - 5) + " others");
                         break;
                     }
                     
@@ -157,8 +157,8 @@ public class LootTableViewerGui {
         }
         
         lore.add("");
-        lore.add("§a§lClic gauche pour modifier");
-        lore.add("§c§lClic droit pour supprimer");
+        lore.add("§a§lLeft click to modify");
+        lore.add("§c§lRight click to delete");
         
         meta.setLore(lore);
         item.setItemMeta(meta);
@@ -331,53 +331,53 @@ public class LootTableViewerGui {
             case ZOMBIE:
                 return "Zombie";
             case SKELETON:
-                return "Squelette";
+                return "Skeleton";
             case CREEPER:
                 return "Creeper";
             case SPIDER:
-                return "Araignée";
+                return "Spider";
             case ENDERMAN:
                 return "Enderman";
             case WITCH:
-                return "Sorcière";
+                return "Witch";
             case ZOMBIE_VILLAGER:
-                return "Zombie Villageois";
+                return "Zombie Villager";
             case HUSK:
-                return "Zombie Momifié";
+                return "Husk";
             case STRAY:
-                return "Squelette Polaire";
+                return "Stray";
             case WITHER_SKELETON:
-                return "Squelette Wither";
+                return "Wither Skeleton";
             case BLAZE:
                 return "Blaze";
             case GHAST:
                 return "Ghast";
             case MAGMA_CUBE:
-                return "Cube de Magma";
+                return "Magma Cube";
             case SLIME:
                 return "Slime";
             case SILVERFISH:
-                return "Poisson d'Argent";
+                return "Silverfish";
             case CAVE_SPIDER:
-                return "Araignée des Cavernes";
+                return "Cave Spider";
             case DROWNED:
-                return "Noyé";
+                return "Drowned";
             case PHANTOM:
-                return "Fantôme";
+                return "Phantom";
             case PILLAGER:
-                return "Pillard";
+                return "Pillager";
             case VINDICATOR:
-                return "Vindicateur";
+                return "Vindicator";
             case EVOKER:
-                return "Évocateur";
+                return "Evoker";
             case RAVAGER:
-                return "Ravageur";
+                return "Ravager";
             case VEX:
                 return "Vex";
             case GUARDIAN:
-                return "Gardien";
+                return "Guardian";
             case ELDER_GUARDIAN:
-                return "Gardien Ancien";
+                return "Elder Guardian";
             case SHULKER:
                 return "Shulker";
             case ENDERMITE:

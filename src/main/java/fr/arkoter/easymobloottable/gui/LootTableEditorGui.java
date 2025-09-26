@@ -43,10 +43,10 @@ public class LootTableEditorGui {
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName("§e§l" + material.name());
             meta.setLore(Arrays.asList(
-                "§7Quantité minimum: §f" + quantity.min,
-                "§7Quantité maximum: §f" + quantity.max,
-                "§c§lClic droit pour supprimer",
-                "§a§lClic gauche pour modifier"
+                "§7Minimum quantity: §f" + quantity.min,
+                "§7Maximum quantity: §f" + quantity.max,
+                "§c§lRight click to remove",
+                "§a§lLeft click to modify"
             ));
             item.setItemMeta(meta);
             gui.setItem(slot, item);
@@ -56,10 +56,10 @@ public class LootTableEditorGui {
         // Add new item button
         ItemStack addItem = new ItemStack(Material.EMERALD);
         ItemMeta addMeta = addItem.getItemMeta();
-        addMeta.setDisplayName("§a§lAjouter l'item en main");
+        addMeta.setDisplayName("§a§lAdd Item in Hand");
         addMeta.setLore(Arrays.asList(
-            "§7Cliquez pour ajouter l'item que",
-            "§7vous tenez en main à la loot table"
+            "§7Click to add the item you",
+            "§7are holding to the loot table"
         ));
         addItem.setItemMeta(addMeta);
         gui.setItem(45, addItem);
@@ -67,10 +67,10 @@ public class LootTableEditorGui {
         // Save button
         ItemStack save = new ItemStack(Material.WRITABLE_BOOK);
         ItemMeta saveMeta = save.getItemMeta();
-        saveMeta.setDisplayName("§a§lSauvegarder");
+        saveMeta.setDisplayName("§a§lSave");
         saveMeta.setLore(Arrays.asList(
-            "§7Cliquez pour sauvegarder",
-            "§7les modifications"
+            "§7Click to save",
+            "§7the modifications"
         ));
         save.setItemMeta(saveMeta);
         gui.setItem(48, save);
@@ -78,17 +78,17 @@ public class LootTableEditorGui {
         // Back button
         ItemStack back = new ItemStack(Material.ARROW);
         ItemMeta backMeta = back.getItemMeta();
-        backMeta.setDisplayName("§c§lRetour à la sélection");
+        backMeta.setDisplayName("§c§lBack to Selection");
         back.setItemMeta(backMeta);
         gui.setItem(49, back);
         
         // Reset button (restore original loot)
         ItemStack reset = new ItemStack(Material.REDSTONE);
         ItemMeta resetMeta = reset.getItemMeta();
-        resetMeta.setDisplayName("§c§lRéinitialiser");
+        resetMeta.setDisplayName("§c§lReset");
         resetMeta.setLore(Arrays.asList(
-            "§7Supprime toutes les modifications",
-            "§7et restaure la loot table d'origine"
+            "§7Remove all modifications",
+            "§7and restore original loot table"
         ));
         reset.setItemMeta(resetMeta);
         gui.setItem(50, reset);
@@ -96,7 +96,7 @@ public class LootTableEditorGui {
         // Close button
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName("§c§lFermer");
+        closeMeta.setDisplayName("§c§lClose");
         close.setItemMeta(closeMeta);
         gui.setItem(53, close);
         
@@ -113,7 +113,7 @@ public class LootTableEditorGui {
                 // Add item from player's hand
                 ItemStack handItem = player.getInventory().getItemInMainHand();
                 if (handItem == null || handItem.getType() == Material.AIR) {
-                    player.sendMessage("§cVous devez tenir un item en main pour l'ajouter!");
+                    player.sendMessage("§cYou must hold an item in your hand to add it!");
                     return;
                 }
                 
@@ -122,7 +122,7 @@ public class LootTableEditorGui {
                 // Check if item already exists in loot table
                 String configPath = "mobs." + mobType.name() + ".items." + material.name();
                 if (plugin.getConfig().contains(configPath)) {
-                    player.sendMessage("§cCet item est déjà dans la loot table!");
+                    player.sendMessage("§cThis item is already in the loot table!");
                     return;
                 }
                 
@@ -131,14 +131,14 @@ public class LootTableEditorGui {
                 plugin.getConfig().set(configPath + ".max", 1);
                 plugin.saveConfig();
                 
-                player.sendMessage("§aItem ajouté: " + material.name() + " (1-1). Cliquez sur l'item pour modifier les quantités.");
+                player.sendMessage("§aItem added: " + material.name() + " (1-1). Click on the item to modify quantities.");
                 
                 // Refresh the GUI
                 open(player, mobType);
                 break;
             case WRITABLE_BOOK:
                 // Save (already auto-saved when items are modified)
-                player.sendMessage("§aLoot table sauvegardée!");
+                player.sendMessage("§aLoot table saved!");
                 break;
             case ARROW:
                 // Back to mob selection
@@ -188,7 +188,7 @@ public class LootTableEditorGui {
             currentMax = plugin.getConfig().getInt(configPath + ".max", 1);
         }
         
-        Inventory gui = Bukkit.createInventory(null, 27, "§6§lQuantité Minimum - " + material.name());
+        Inventory gui = Bukkit.createInventory(null, 27, "§6§lMinimum Quantity - " + material.name());
         
         // Decrease buttons (left side)
         ItemStack decrease10 = new ItemStack(Material.RED_CONCRETE);
@@ -208,8 +208,8 @@ public class LootTableEditorGui {
         ItemMeta displayMeta = displayItem.getItemMeta();
         displayMeta.setDisplayName("§e§l" + material.name());
         displayMeta.setLore(Arrays.asList(
-            "§7Quantité minimum: §f" + currentMin,
-            "§7Quantité maximum actuelle: §f" + currentMax
+            "§7Minimum quantity: §f" + currentMin,
+            "§7Current maximum quantity: §f" + currentMax
         ));
         displayItem.setItemMeta(displayMeta);
         gui.setItem(13, displayItem);
@@ -230,10 +230,10 @@ public class LootTableEditorGui {
         // Confirm button
         ItemStack confirm = new ItemStack(Material.EMERALD);
         ItemMeta confirmMeta = confirm.getItemMeta();
-        confirmMeta.setDisplayName("§a§lConfirmer Minimum");
+        confirmMeta.setDisplayName("§a§lConfirm Minimum");
         confirmMeta.setLore(Arrays.asList(
-            "§7Confirmer et passer à la",
-            "§7sélection de la quantité maximum"
+            "§7Confirm and proceed to",
+            "§7maximum quantity selection"
         ));
         confirm.setItemMeta(confirmMeta);
         gui.setItem(22, confirm);
@@ -241,7 +241,7 @@ public class LootTableEditorGui {
         // Cancel button
         ItemStack cancel = new ItemStack(Material.BARRIER);
         ItemMeta cancelMeta = cancel.getItemMeta();
-        cancelMeta.setDisplayName("§c§lAnnuler");
+        cancelMeta.setDisplayName("§c§lCancel");
         cancel.setItemMeta(cancelMeta);
         gui.setItem(26, cancel);
         
@@ -273,7 +273,7 @@ public class LootTableEditorGui {
             currentMax = minQuantity;
         }
         
-        Inventory gui = Bukkit.createInventory(null, 27, "§6§lQuantité Maximum - " + material.name());
+        Inventory gui = Bukkit.createInventory(null, 27, "§6§lMaximum Quantity - " + material.name());
         
         // Decrease buttons (left side)
         ItemStack decrease10 = new ItemStack(Material.RED_CONCRETE);
@@ -293,8 +293,8 @@ public class LootTableEditorGui {
         ItemMeta displayMeta = displayItem.getItemMeta();
         displayMeta.setDisplayName("§e§l" + material.name());
         displayMeta.setLore(Arrays.asList(
-            "§7Quantité minimum: §f" + minQuantity,
-            "§7Quantité maximum: §f" + currentMax
+            "§7Minimum quantity: §f" + minQuantity,
+            "§7Maximum quantity: §f" + currentMax
         ));
         displayItem.setItemMeta(displayMeta);
         gui.setItem(13, displayItem);
@@ -315,10 +315,10 @@ public class LootTableEditorGui {
         // Confirm button
         ItemStack confirm = new ItemStack(Material.EMERALD);
         ItemMeta confirmMeta = confirm.getItemMeta();
-        confirmMeta.setDisplayName("§a§lConfirmer Maximum");
+        confirmMeta.setDisplayName("§a§lConfirm Maximum");
         confirmMeta.setLore(Arrays.asList(
-            "§7Sauvegarder les modifications",
-            "§7et retourner au menu"
+            "§7Save modifications",
+            "§7and return to menu"
         ));
         confirm.setItemMeta(confirmMeta);
         gui.setItem(22, confirm);
@@ -326,7 +326,7 @@ public class LootTableEditorGui {
         // Cancel button
         ItemStack cancel = new ItemStack(Material.BARRIER);
         ItemMeta cancelMeta = cancel.getItemMeta();
-        cancelMeta.setDisplayName("§c§lAnnuler");
+        cancelMeta.setDisplayName("§c§lCancel");
         cancel.setItemMeta(cancelMeta);
         gui.setItem(26, cancel);
         
@@ -426,7 +426,7 @@ public class LootTableEditorGui {
                 plugin.getConfig().set(configPath + ".max", currentMax);
                 plugin.saveConfig();
                 
-                player.sendMessage("§aQuantités mises à jour: " + material.name() + " (" + minQuantity + "-" + currentMax + ")");
+                player.sendMessage("§aQuantities updated: " + material.name() + " (" + minQuantity + "-" + currentMax + ")");
                 
                 // Go back to loot table editor
                 open(player, mobType);
@@ -452,7 +452,7 @@ public class LootTableEditorGui {
         }
         
         plugin.saveConfig();
-        player.sendMessage("§cItem supprimé: " + material.name());
+        player.sendMessage("§cItem removed: " + material.name());
         
         // Refresh the GUI
         open(player, mobType);
@@ -461,7 +461,7 @@ public class LootTableEditorGui {
     private void resetLootTable(Player player, EntityType mobType) {
         plugin.getConfig().set("mobs." + mobType.name(), null);
         plugin.saveConfig();
-        player.sendMessage("§aLoot table réinitialisée pour: " + getMobDisplayName(mobType));
+        player.sendMessage("§aLoot table reset for: " + getMobDisplayName(mobType));
         
         // Go back to mob selection
         MobSelectionGui mobGui = new MobSelectionGui(guiManager, plugin);
@@ -505,53 +505,53 @@ public class LootTableEditorGui {
             case ZOMBIE:
                 return "Zombie";
             case SKELETON:
-                return "Squelette";
+                return "Skeleton";
             case CREEPER:
                 return "Creeper";
             case SPIDER:
-                return "Araignée";
+                return "Spider";
             case ENDERMAN:
                 return "Enderman";
             case WITCH:
-                return "Sorcière";
+                return "Witch";
             case ZOMBIE_VILLAGER:
-                return "Zombie Villageois";
+                return "Zombie Villager";
             case HUSK:
-                return "Zombie Momifié";
+                return "Husk";
             case STRAY:
-                return "Squelette Polaire";
+                return "Stray";
             case WITHER_SKELETON:
-                return "Squelette Wither";
+                return "Wither Skeleton";
             case BLAZE:
                 return "Blaze";
             case GHAST:
                 return "Ghast";
             case MAGMA_CUBE:
-                return "Cube de Magma";
+                return "Magma Cube";
             case SLIME:
                 return "Slime";
             case SILVERFISH:
-                return "Poisson d'Argent";
+                return "Silverfish";
             case CAVE_SPIDER:
-                return "Araignée des Cavernes";
+                return "Cave Spider";
             case DROWNED:
-                return "Noyé";
+                return "Drowned";
             case PHANTOM:
-                return "Fantôme";
+                return "Phantom";
             case PILLAGER:
-                return "Pillard";
+                return "Pillager";
             case VINDICATOR:
-                return "Vindicateur";
+                return "Vindicator";
             case EVOKER:
-                return "Évocateur";
+                return "Evoker";
             case RAVAGER:
-                return "Ravageur";
+                return "Ravager";
             case VEX:
                 return "Vex";
             case GUARDIAN:
-                return "Gardien";
+                return "Guardian";
             case ELDER_GUARDIAN:
-                return "Gardien Ancien";
+                return "Elder Guardian";
             case SHULKER:
                 return "Shulker";
             case ENDERMITE:

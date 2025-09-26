@@ -38,15 +38,15 @@ public class GuiManager implements Listener {
     }
     
     public void openMainMenu(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, "§6§lEasyMobLootTable - Menu Principal");
+        Inventory gui = Bukkit.createInventory(null, 27, "§6§lEasyMobLootTable - Main Menu");
         
         // Create new loot table option
         ItemStack createNew = new ItemStack(Material.EMERALD);
         ItemMeta createMeta = createNew.getItemMeta();
-        createMeta.setDisplayName("§a§lCréer une nouvelle loot table");
+        createMeta.setDisplayName("§a§lCreate New Loot Table");
         createMeta.setLore(Arrays.asList(
-            "§7Cliquez pour choisir un mob et",
-            "§7créer une nouvelle loot table"
+            "§7Click to choose a mob and",
+            "§7create a new loot table"
         ));
         createNew.setItemMeta(createMeta);
         gui.setItem(11, createNew);
@@ -54,10 +54,10 @@ public class GuiManager implements Listener {
         // View existing loot tables option
         ItemStack viewExisting = new ItemStack(Material.BOOK);
         ItemMeta viewMeta = viewExisting.getItemMeta();
-        viewMeta.setDisplayName("§b§lVoir les loot tables modifiées");
+        viewMeta.setDisplayName("§b§lView Modified Loot Tables");
         viewMeta.setLore(Arrays.asList(
-            "§7Cliquez pour voir, modifier ou",
-            "§7supprimer les loot tables existantes"
+            "§7Click to view, modify or",
+            "§7delete existing loot tables"
         ));
         viewExisting.setItemMeta(viewMeta);
         gui.setItem(15, viewExisting);
@@ -65,7 +65,7 @@ public class GuiManager implements Listener {
         // Close button
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName("§c§lFermer");
+        closeMeta.setDisplayName("§c§lClose");
         close.setItemMeta(closeMeta);
         gui.setItem(22, close);
         

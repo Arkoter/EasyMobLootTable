@@ -82,7 +82,7 @@ public class ItemSelectionGui {
     }
     
     public void open(Player player, EntityType mobType) {
-        Inventory gui = Bukkit.createInventory(null, 54, "§6§lChoisir un item à ajouter");
+        Inventory gui = Bukkit.createInventory(null, 54, "§6§lChoose an Item to Add");
         
         int slot = 0;
         for (Material material : COMMON_ITEMS) {
@@ -95,10 +95,9 @@ public class ItemSelectionGui {
             meta.setDisplayName("§e§l" + displayName);
             meta.setLore(Arrays.asList(
                 "§7Type: §f" + material.name(),
-                "§7Cliquez pour ajouter cet item",
-                "§7à la loot table"
+                "§7Click to add this item",
+                "§7to the loot table"
             ));
-            
             item.setItemMeta(meta);
             gui.setItem(slot, item);
             slot++;
@@ -107,14 +106,14 @@ public class ItemSelectionGui {
         // Back button
         ItemStack back = new ItemStack(Material.ARROW);
         ItemMeta backMeta = back.getItemMeta();
-        backMeta.setDisplayName("§c§lRetour à l'éditeur");
+        backMeta.setDisplayName("§c§lBack to Editor");
         back.setItemMeta(backMeta);
         gui.setItem(49, back);
         
         // Close button
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName("§c§lFermer");
+        closeMeta.setDisplayName("§c§lClose");
         close.setItemMeta(closeMeta);
         gui.setItem(53, close);
         
@@ -152,7 +151,7 @@ public class ItemSelectionGui {
                         // Add item with default quantities and prompt for customization
                         addItemToLootTable(player, mobType, material);
                     } catch (IllegalArgumentException e) {
-                        player.sendMessage("§cErreur: Type d'item invalide!");
+                        player.sendMessage("§cError: Invalid item type!");
                     }
                 }
             }
@@ -166,8 +165,8 @@ public class ItemSelectionGui {
         plugin.getConfig().set(configPath + ".max", 1);
         plugin.saveConfig();
         
-        player.sendMessage("§aItem ajouté: " + material.name() + " (quantité: 1-1)");
-        player.sendMessage("§7Utilisez l'éditeur pour modifier les quantités");
+        player.sendMessage("§aItem added: " + material.name() + " (quantity: 1-1)");
+        player.sendMessage("§7Use the editor to modify quantities");
         
         // Return to loot table editor
         LootTableEditorGui editorGui = new LootTableEditorGui(guiManager, plugin);
@@ -177,89 +176,89 @@ public class ItemSelectionGui {
     private String getItemDisplayName(Material material) {
         switch (material) {
             case IRON_INGOT:
-                return "Lingot de Fer";
+                return "Iron Ingot";
             case GOLD_INGOT:
-                return "Lingot d'Or";
+                return "Gold Ingot";
             case DIAMOND:
-                return "Diamant";
+                return "Diamond";
             case EMERALD:
-                return "Émeraude";
+                return "Emerald";
             case NETHERITE_INGOT:
-                return "Lingot de Netherite";
+                return "Netherite Ingot";
             case COPPER_INGOT:
-                return "Lingot de Cuivre";
+                return "Copper Ingot";
             case COAL:
-                return "Charbon";
+                return "Coal";
             case REDSTONE:
                 return "Redstone";
             case LAPIS_LAZULI:
-                return "Lapis-Lazuli";
+                return "Lapis Lazuli";
             case BREAD:
-                return "Pain";
+                return "Bread";
             case COOKED_BEEF:
-                return "Bœuf Cuit";
+                return "Cooked Beef";
             case COOKED_PORKCHOP:
-                return "Côtelette de Porc Cuite";
+                return "Cooked Porkchop";
             case COOKED_CHICKEN:
-                return "Poulet Cuit";
+                return "Cooked Chicken";
             case GOLDEN_APPLE:
-                return "Pomme d'Or";
+                return "Golden Apple";
             case ENCHANTED_GOLDEN_APPLE:
-                return "Pomme d'Or Enchantée";
+                return "Enchanted Golden Apple";
             case IRON_SWORD:
-                return "Épée en Fer";
+                return "Iron Sword";
             case IRON_AXE:
-                return "Hache en Fer";
+                return "Iron Axe";
             case IRON_PICKAXE:
-                return "Pioche en Fer";
+                return "Iron Pickaxe";
             case BOW:
-                return "Arc";
+                return "Bow";
             case CROSSBOW:
-                return "Arbalète";
+                return "Crossbow";
             case IRON_HELMET:
-                return "Casque en Fer";
+                return "Iron Helmet";
             case IRON_CHESTPLATE:
-                return "Plastron en Fer";
+                return "Iron Chestplate";
             case IRON_LEGGINGS:
-                return "Jambières en Fer";
+                return "Iron Leggings";
             case IRON_BOOTS:
-                return "Bottes en Fer";
+                return "Iron Boots";
             case DIAMOND_HELMET:
-                return "Casque en Diamant";
+                return "Diamond Helmet";
             case DIAMOND_CHESTPLATE:
-                return "Plastron en Diamant";
+                return "Diamond Chestplate";
             case DIAMOND_LEGGINGS:
-                return "Jambières en Diamant";
+                return "Diamond Leggings";
             case DIAMOND_BOOTS:
-                return "Bottes en Diamant";
+                return "Diamond Boots";
             case POTION:
                 return "Potion";
             case EXPERIENCE_BOTTLE:
-                return "Fiole d'Expérience";
+                return "Bottle o' Enchanting";
             case BLAZE_POWDER:
-                return "Poudre de Blaze";
+                return "Blaze Powder";
             case GHAST_TEAR:
-                return "Larme de Ghast";
+                return "Ghast Tear";
             case ENDER_PEARL:
-                return "Perle de l'Ender";
+                return "Ender Pearl";
             case NETHER_STAR:
-                return "Étoile du Nether";
+                return "Nether Star";
             case TOTEM_OF_UNDYING:
-                return "Totem d'Immortalité";
+                return "Totem of Undying";
             case ELYTRA:
-                return "Élytres";
+                return "Elytra";
             case COBBLESTONE:
-                return "Pierre Taillée";
+                return "Cobblestone";
             case STONE:
-                return "Pierre";
+                return "Stone";
             case DIRT:
-                return "Terre";
+                return "Dirt";
             case OAK_LOG:
-                return "Bûche de Chêne";
+                return "Oak Log";
             case SAND:
-                return "Sable";
+                return "Sand";
             case GRAVEL:
-                return "Gravier";
+                return "Gravel";
             default:
                 return material.name();
         }

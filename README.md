@@ -18,7 +18,7 @@ A Minecraft plugin that allows server administrators to easily customize mob loo
 
 ## 📦 Installation
 
-1. Download the latest `EasyMobLootTable-1.1.0.jar` from the releases
+1. Download the latest `EasyMobLootTable-1.1.1.jar` from the releases
 2. Place the JAR file in your server's `plugins` folder
 3. Restart your server
 4. The plugin will create a default configuration file automatically

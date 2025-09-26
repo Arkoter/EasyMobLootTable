@@ -105,7 +105,7 @@ public class MobSelectionGui {
     }
     
     public void open(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 54, "§6§lChoisir un mob");
+        Inventory gui = Bukkit.createInventory(null, 54, "§6§lChoose a Mob");
         
         int slot = 0;
         for (EntityType mobType : ALL_MOBS) {
@@ -119,8 +119,8 @@ public class MobSelectionGui {
             meta.setDisplayName("§e§l" + mobName);
             meta.setLore(Arrays.asList(
                 "§7Type: §f" + mobType.name(),
-                "§7Cliquez pour créer une loot table",
-                "§7pour ce mob"
+                "§7Click to create a loot table",
+                "§7for this mob"
             ));
             
             mobItem.setItemMeta(meta);
@@ -131,14 +131,14 @@ public class MobSelectionGui {
         // Back button
         ItemStack back = new ItemStack(Material.ARROW);
         ItemMeta backMeta = back.getItemMeta();
-        backMeta.setDisplayName("§c§lRetour au menu principal");
+        backMeta.setDisplayName("§c§lBack to Main Menu");
         back.setItemMeta(backMeta);
         gui.setItem(49, back);
         
         // Close button
         ItemStack close = new ItemStack(Material.BARRIER);
         ItemMeta closeMeta = close.getItemMeta();
-        closeMeta.setDisplayName("§c§lFermer");
+        closeMeta.setDisplayName("§c§lClose");
         close.setItemMeta(closeMeta);
         gui.setItem(53, close);
         
@@ -174,7 +174,7 @@ public class MobSelectionGui {
                         LootTableEditorGui editorGui = new LootTableEditorGui(guiManager, plugin);
                         editorGui.open(player, mobType);
                     } catch (IllegalArgumentException e) {
-                        player.sendMessage("§cErreur: Type de mob invalide!");
+                        player.sendMessage("§cError: Invalid mob type!");
                     }
                 }
             }
@@ -345,53 +345,53 @@ public class MobSelectionGui {
             case ZOMBIE:
                 return "Zombie";
             case SKELETON:
-                return "Squelette";
+                return "Skeleton";
             case CREEPER:
                 return "Creeper";
             case SPIDER:
-                return "Araignée";
+                return "Spider";
             case ENDERMAN:
                 return "Enderman";
             case WITCH:
-                return "Sorcière";
+                return "Witch";
             case ZOMBIE_VILLAGER:
-                return "Zombie Villageois";
+                return "Zombie Villager";
             case HUSK:
-                return "Zombie Momifié";
+                return "Husk";
             case STRAY:
-                return "Squelette Polaire";
+                return "Stray";
             case WITHER_SKELETON:
-                return "Squelette Wither";
+                return "Wither Skeleton";
             case BLAZE:
                 return "Blaze";
             case GHAST:
                 return "Ghast";
             case MAGMA_CUBE:
-                return "Cube de Magma";
+                return "Magma Cube";
             case SLIME:
                 return "Slime";
             case SILVERFISH:
-                return "Poisson d'Argent";
+                return "Silverfish";
             case CAVE_SPIDER:
-                return "Araignée des Cavernes";
+                return "Cave Spider";
             case DROWNED:
-                return "Noyé";
+                return "Drowned";
             case PHANTOM:
-                return "Fantôme";
+                return "Phantom";
             case PILLAGER:
-                return "Pillard";
+                return "Pillager";
             case VINDICATOR:
-                return "Vindicateur";
+                return "Vindicator";
             case EVOKER:
-                return "Évocateur";
+                return "Evoker";
             case RAVAGER:
-                return "Ravageur";
+                return "Ravager";
             case VEX:
                 return "Vex";
             case GUARDIAN:
-                return "Gardien";
+                return "Guardian";
             case ELDER_GUARDIAN:
-                return "Gardien Ancien";
+                return "Elder Guardian";
             case SHULKER:
                 return "Shulker";
             case ENDERMITE:

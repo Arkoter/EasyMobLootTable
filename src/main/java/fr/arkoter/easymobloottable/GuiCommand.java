@@ -17,14 +17,14 @@ public class GuiCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("§cCette commande ne peut être exécutée que par un joueur!");
+            sender.sendMessage("§cThis command can only be executed by a player!");
             return true;
         }
         
         Player player = (Player) sender;
         
         if (!player.hasPermission("easymobloottable.admin")) {
-            player.sendMessage("§cVous n'avez pas la permission d'utiliser cette commande!");
+            player.sendMessage("§cYou don't have permission to use this command!");
             return true;
         }
         
